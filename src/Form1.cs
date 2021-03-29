@@ -2,38 +2,47 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Dedup
 {
     public partial class Dedup : Form
     {
+        private int totalFileCount = 0;
+        private Dictionary<string, string> dict = new Dictionary<string, string>();
+        private int dupCount = 0;
+        private string path = @"W:\Pictures";
+        private string fileExtension = "*.jpg";
+        private int processedFileCount = 0;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+
         public Dedup()
         {
             InitializeComponent();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.DoWork += BackgroundWorker1_DoWork;
+            backgroundWorker1.ProgressChanged += BackgroundWorker1_ProgressChanged;
+
+            fileScanProgress.Step = 1;
+            fileScanProgress.Value = 0;
         }
 
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-
+            fileScanProgress.Value = e.ProgressPercentage;
         }
 
-        private void Dedup_Load(object sender, EventArgs e)
+        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
+            totalFileCount = Directory.GetFiles(path, fileExtension, SearchOption.AllDirectories).Length;
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var fileCount = 0;
-            var dict = new Dictionary<string, string>();
-            var dupCount = 0;
-
-            var path = @"W:\Pictures";
-            string[] files = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(path, fileExtension, SearchOption.AllDirectories);
             foreach (var file in files)
             {
-                fileCount++;
+                processedFileCount++;
+                var process = 100 / totalFileCount * processedFileCount;
                 using (var md5 = MD5.Create())
                 {
                     using (var stream = System.IO.File.OpenRead(file))
@@ -51,15 +60,21 @@ namespace Dedup
                         Console.WriteLine(str);
                     }
                 }
-
+                backgroundWorker1.ReportProgress(process);
             }
 
 
-            Console.WriteLine($"Files {fileCount}");
+            Console.WriteLine($"Files {processedFileCount}");
             Console.WriteLine($"duplicates {dupCount}");
         }
 
-        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            backgroundWorker1.RunWorkerAsync();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Zru7by2QYaRyc7FqDqSfEIJkXXT/ziK2Krbh5p8DcY4utWTZrT9C8oRUJXNEuxQuwXn+NnBKxxMCZk9JNXAVvw==",
+  "dgSpecHash": "caYB+j5VlVdBN3OqbivsvJGd17aL8t/VZ1LvmP7+3hLbGA3CNaoaGrwQbb6c/qmF6xBiFEJfy5UOVMngamIFAQ==",
   "success": true,
-  "projectFilePath": "D:\\Repo\\github\\dedup\\Dedup\\Dedup.csproj",
+  "projectFilePath": "D:\\Repo\\github\\dedup\\src\\Dedup.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

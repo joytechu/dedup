@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Repo\\github\\dedup\\src\\Dedup.csproj": {}
+    "D:\\Repo\\github\\dedup\\bluetoothScanner\\bluetoothScanner.csproj": {}
   },
   "projects": {
-    "D:\\Repo\\github\\dedup\\src\\Dedup.csproj": {
+    "D:\\Repo\\github\\dedup\\bluetoothScanner\\bluetoothScanner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Repo\\github\\dedup\\src\\Dedup.csproj",
-        "projectName": "Dedup",
-        "projectPath": "D:\\Repo\\github\\dedup\\src\\Dedup.csproj",
+        "projectUniqueName": "D:\\Repo\\github\\dedup\\bluetoothScanner\\bluetoothScanner.csproj",
+        "projectName": "bluetoothScanner",
+        "projectPath": "D:\\Repo\\github\\dedup\\bluetoothScanner\\bluetoothScanner.csproj",
         "packagesPath": "C:\\Users\\kev\\.nuget\\packages\\",
-        "outputPath": "D:\\Repo\\github\\dedup\\src\\obj\\",
+        "outputPath": "D:\\Repo\\github\\dedup\\bluetoothScanner\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -22,15 +22,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0-windows7.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0-windows7.0": {
-            "targetAlias": "net5.0-windows",
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -41,8 +41,18 @@
         }
       },
       "frameworks": {
-        "net5.0-windows7.0": {
-          "targetAlias": "net5.0-windows",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Plugin.BluetoothLE": {
+              "target": "Package",
+              "version": "[6.3.0.19, )"
+            },
+            "UwpDesktop": {
+              "target": "Package",
+              "version": "[10.0.14393.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -56,9 +66,6 @@
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WindowsForms": {
-              "privateAssets": "none"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"

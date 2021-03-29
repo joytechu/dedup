@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "xFW/3hUb1w9I10z3lrsnhwQHY+OWfDCQF5Rn1l9bgYQD6e1xu+79t+IVpv2olAH1oBszHJj1Sgqb8acUWBE/rg==",
+  "success": true,
+  "projectFilePath": "D:\\Repo\\github\\dedup\\bluetoothScanner\\bluetoothScanner.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kev\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\kev\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\kev\\.nuget\\packages\\plugin.bluetoothle\\6.3.0.19\\plugin.bluetoothle.6.3.0.19.nupkg.sha512",
+    "C:\\Users\\kev\\.nuget\\packages\\system.reactive\\4.1.5\\system.reactive.4.1.5.nupkg.sha512",
+    "C:\\Users\\kev\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\kev\\.nuget\\packages\\system.runtime.interopservices.windowsruntime\\4.3.0\\system.runtime.interopservices.windowsruntime.4.3.0.nupkg.sha512",
+    "C:\\Users\\kev\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.2\\system.threading.tasks.extensions.4.5.2.nupkg.sha512",
+    "C:\\Users\\kev\\.nuget\\packages\\uwpdesktop\\10.0.14393.3\\uwpdesktop.10.0.14393.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'UwpDesktop 10.0.14393.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "UwpDesktop",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}

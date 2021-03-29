@@ -1,0 +1,17 @@
+D:\Repo\github\dedup\bluetoothScanner\bin\Debug\netcoreapp3.1\bluetoothScanner.exe
+D:\Repo\github\dedup\bluetoothScanner\bin\Debug\netcoreapp3.1\bluetoothScanner.deps.json
+D:\Repo\github\dedup\bluetoothScanner\bin\Debug\netcoreapp3.1\bluetoothScanner.runtimeconfig.json
+D:\Repo\github\dedup\bluetoothScanner\bin\Debug\netcoreapp3.1\bluetoothScanner.runtimeconfig.dev.json
+D:\Repo\github\dedup\bluetoothScanner\bin\Debug\netcoreapp3.1\bluetoothScanner.dll
+D:\Repo\github\dedup\bluetoothScanner\bin\Debug\netcoreapp3.1\bluetoothScanner.pdb
+D:\Repo\github\dedup\bluetoothScanner\bin\Debug\netcoreapp3.1\Plugin.BluetoothLE.dll
+D:\Repo\github\dedup\bluetoothScanner\bin\Debug\netcoreapp3.1\System.Reactive.dll
+D:\Repo\github\dedup\bluetoothScanner\bin\Debug\netcoreapp3.1\Windows.WinMD
+D:\Repo\github\dedup\bluetoothScanner\obj\Debug\netcoreapp3.1\bluetoothScanner.csprojAssemblyReference.cache
+D:\Repo\github\dedup\bluetoothScanner\obj\Debug\netcoreapp3.1\bluetoothScanner.AssemblyInfoInputs.cache
+D:\Repo\github\dedup\bluetoothScanner\obj\Debug\netcoreapp3.1\bluetoothScanner.AssemblyInfo.cs
+D:\Repo\github\dedup\bluetoothScanner\obj\Debug\netcoreapp3.1\bluetoothScanner.csproj.CoreCompileInputs.cache
+D:\Repo\github\dedup\bluetoothScanner\obj\Debug\netcoreapp3.1\bluetoothScanner.csproj.CopyComplete
+D:\Repo\github\dedup\bluetoothScanner\obj\Debug\netcoreapp3.1\bluetoothScanner.dll
+D:\Repo\github\dedup\bluetoothScanner\obj\Debug\netcoreapp3.1\bluetoothScanner.pdb
+D:\Repo\github\dedup\bluetoothScanner\obj\Debug\netcoreapp3.1\bluetoothScanner.genruntimeconfig.cache

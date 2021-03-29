@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repo\\github\\dedup\\Dedup\\Dedup.csproj",
+      "projectUniqueName": "D:\\Repo\\github\\dedup\\src\\Dedup.csproj",
       "projectName": "Dedup",
-      "projectPath": "D:\\Repo\\github\\dedup\\Dedup\\Dedup.csproj",
+      "projectPath": "D:\\Repo\\github\\dedup\\src\\Dedup.csproj",
       "packagesPath": "C:\\Users\\kev\\.nuget\\packages\\",
-      "outputPath": "D:\\Repo\\github\\dedup\\Dedup\\obj\\",
+      "outputPath": "D:\\Repo\\github\\dedup\\src\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
