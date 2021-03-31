@@ -1,21 +1,44 @@
-﻿using System;
+﻿using Dedup.Core;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace Dedup
 {
-    public partial class Dedup : Form
+    public partial class Dedup : Form, INotifyPropertyChanged
     {
+        #region private members
         private int totalFileCount = 0;
         private Dictionary<string, string> dict = new Dictionary<string, string>();
         private int dupCount = 0;
-        private string path = @"W:\Pictures";
-        private string fileExtension = "*.jpg";
+        private string _path = "";
+        private string fileExtension = "*.*";
         private int processedFileCount = 0;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+        #region properties
+        public string Path
+        {
+            get
+            {
+                return _path;
+            }
+
+            set
+            {
+                if (value != _path)
+                {
+                    _path = value;
+                    NotifyPropertyChanged("Path");
+                }
+            }
+        }
+        #endregion
 
         public Dedup()
         {
@@ -27,6 +50,18 @@ namespace Dedup
 
             fileScanProgress.Step = 1;
             fileScanProgress.Value = 0;
+
+
+            DedupPathLabel.DataBindings.Add(new Binding("Text", this, "Path"));
+        }
+
+        #region methods
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
         private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
@@ -36,36 +71,28 @@ namespace Dedup
 
         private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            totalFileCount = Directory.GetFiles(path, fileExtension, SearchOption.AllDirectories).Length;
-
-            string[] files = Directory.GetFiles(path, fileExtension, SearchOption.AllDirectories);
-            foreach (var file in files)
+            try
             {
-                processedFileCount++;
-                var process = 100 / totalFileCount * processedFileCount;
-                using (var md5 = MD5.Create())
+                totalFileCount = Directory.GetFiles(Path, fileExtension, SearchOption.AllDirectories).Length;
+
+                string[] files = Directory.GetFiles(Path, fileExtension, SearchOption.AllDirectories);
+                foreach (var file in files)
                 {
-                    using (var stream = System.IO.File.OpenRead(file))
-                    {
-                        var hash = md5.ComputeHash(stream);
-                        var str = BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+                    processedFileCount++;
+                    var process = 100 / totalFileCount * processedFileCount;
 
-
-                        if (!dict.ContainsKey(str))
-                            dict.Add(str, file);
-                        else
-                            dupCount++;
-
-
-                        Console.WriteLine(str);
-                    }
+                    var hashstr = FileHasher.GetHash(file);
+                    if (!dict.ContainsKey(hashstr))
+                        dict.Add(hashstr, file);
+                    else
+                        dupCount++;
+                    backgroundWorker1.ReportProgress(process);
                 }
-                backgroundWorker1.ReportProgress(process);
             }
-
-
-            Console.WriteLine($"Files {processedFileCount}");
-            Console.WriteLine($"duplicates {dupCount}");
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
 
@@ -78,5 +105,23 @@ namespace Dedup
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+            {
+                if (dlg.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+                Path = dlg.SelectedPath;
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }

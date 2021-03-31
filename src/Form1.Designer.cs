@@ -29,9 +29,7 @@ namespace Dedup
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dedup));
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -62,13 +60,11 @@ namespace Dedup
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileScanProgress = new System.Windows.Forms.ProgressBar();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.button2 = new System.Windows.Forms.Button();
+            this.DedupPathLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // button1
             // 
@@ -291,16 +287,38 @@ namespace Dedup
             // 
             // fileScanProgress
             // 
-            this.fileScanProgress.Location = new System.Drawing.Point(12, 317);
+            this.fileScanProgress.Location = new System.Drawing.Point(12, 415);
             this.fileScanProgress.Name = "fileScanProgress";
             this.fileScanProgress.Size = new System.Drawing.Size(533, 23);
             this.fileScanProgress.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "...";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // DedupPathLabel
+            // 
+            this.DedupPathLabel.AutoSize = true;
+            this.DedupPathLabel.Location = new System.Drawing.Point(93, 6);
+            this.DedupPathLabel.Name = "DedupPathLabel";
+            this.DedupPathLabel.Size = new System.Drawing.Size(35, 15);
+            this.DedupPathLabel.TabIndex = 7;
+            this.DedupPathLabel.Text = "PATH";
+            this.DedupPathLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // Dedup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(564, 450);
+            this.Controls.Add(this.DedupPathLabel);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.fileScanProgress);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.listBox1);
@@ -309,12 +327,11 @@ namespace Dedup
             this.Text = "Dedup";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -374,6 +391,9 @@ namespace Dedup
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ProgressBar fileScanProgress;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label DedupPathLabel;
     }
 }
 
