@@ -1,4 +1,5 @@
 ﻿using Dedup.Core;
+using Dedup.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace Dedup
         private int processedFileCount = 0;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         public event PropertyChangedEventHandler PropertyChanged;
+        private IFileHasher _hasher;
         #endregion
 
         #region properties
@@ -47,12 +49,21 @@ namespace Dedup
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.DoWork += BackgroundWorker1_DoWork;
             backgroundWorker1.ProgressChanged += BackgroundWorker1_ProgressChanged;
+            backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
 
             fileScanProgress.Step = 1;
             fileScanProgress.Value = 0;
-
+            //_hasher = hasher;
 
             DedupPathLabel.DataBindings.Add(new Binding("Text", this, "Path"));
+        }
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            foreach(var s in dict.Keys)
+            {
+                duplicateFilesListBox.Items.Add(s);
+            }
         }
 
         #region methods
@@ -81,7 +92,7 @@ namespace Dedup
                     processedFileCount++;
                     var process = 100 / totalFileCount * processedFileCount;
 
-                    var hashstr = FileHasher.GetHash(file);
+                    var hashstr = _hasher.GetHash(file);
                     if (!dict.ContainsKey(hashstr))
                         dict.Add(hashstr, file);
                     else
@@ -101,10 +112,7 @@ namespace Dedup
             backgroundWorker1.RunWorkerAsync();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
 
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -117,11 +125,7 @@ namespace Dedup
                 Path = dlg.SelectedPath;
             }
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
         #endregion
+
     }
 }

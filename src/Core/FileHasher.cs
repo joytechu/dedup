@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Dedup.Interfaces;
+using System;
 using System.Security.Cryptography;
 
 namespace Dedup.Core
 {
-    public class FileHasher
+    public class FileHasher : IFileHasher
     {
-        public static string GetHash(string path)
+        public string GetHash(string path)
         {
             using (var md5 = MD5.Create())
             {
