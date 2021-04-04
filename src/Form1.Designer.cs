@@ -1,4 +1,6 @@
 ﻿
+using Dedup.Interfaces;
+
 namespace Dedup
 {
     partial class Dedup
@@ -21,6 +23,7 @@ namespace Dedup
             base.Dispose(disposing);
         }
 
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -29,25 +32,26 @@ namespace Dedup
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.findButton = new System.Windows.Forms.Button();
             this.duplicateFilesListBox = new System.Windows.Forms.ListBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.fileScanProgress = new System.Windows.Forms.ProgressBar();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.button2 = new System.Windows.Forms.Button();
+            this.selectFolderButton = new System.Windows.Forms.Button();
             this.DedupPathLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // button1
+            // findButton
             // 
-            this.button1.Location = new System.Drawing.Point(12, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Find";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.findButton.Location = new System.Drawing.Point(12, 27);
+            this.findButton.Name = "findButton";
+            this.findButton.Size = new System.Drawing.Size(75, 23);
+            this.findButton.TabIndex = 2;
+            this.findButton.Text = "Find";
+            this.findButton.UseVisualStyleBackColor = true;
+            this.findButton.Click += new System.EventHandler(this.findButton_Click);
             // 
             // duplicateFilesListBox
             // 
@@ -58,14 +62,6 @@ namespace Dedup
             this.duplicateFilesListBox.Size = new System.Drawing.Size(216, 154);
             this.duplicateFilesListBox.TabIndex = 3;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(234, 56);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(311, 255);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
             // fileScanProgress
             // 
             this.fileScanProgress.Location = new System.Drawing.Point(12, 415);
@@ -73,15 +69,15 @@ namespace Dedup
             this.fileScanProgress.Size = new System.Drawing.Size(533, 23);
             this.fileScanProgress.TabIndex = 5;
             // 
-            // button2
+            // selectFolderButton
             // 
-            this.button2.Location = new System.Drawing.Point(12, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "...";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.selectFolderButton.Location = new System.Drawing.Point(12, 2);
+            this.selectFolderButton.Name = "selectFolderButton";
+            this.selectFolderButton.Size = new System.Drawing.Size(75, 23);
+            this.selectFolderButton.TabIndex = 6;
+            this.selectFolderButton.Text = "...";
+            this.selectFolderButton.UseVisualStyleBackColor = true;
+            this.selectFolderButton.Click += new System.EventHandler(this.selectFolderButton_Click);
             // 
             // DedupPathLabel
             // 
@@ -92,34 +88,47 @@ namespace Dedup
             this.DedupPathLabel.TabIndex = 7;
             this.DedupPathLabel.Text = "PATH";
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(267, 56);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(464, 309);
+            this.panel1.TabIndex = 8;
+            // 
             // Dedup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 450);
+            this.ClientSize = new System.Drawing.Size(999, 450);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.DedupPathLabel);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.selectFolderButton);
             this.Controls.Add(this.fileScanProgress);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.duplicateFilesListBox);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.findButton);
             this.Name = "Dedup";
             this.Text = "Dedup";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button findButton;
         private System.Windows.Forms.ListBox duplicateFilesListBox;
-        private System.Windows.Forms.PictureBox pictureBox1;
 
         private System.Windows.Forms.ProgressBar fileScanProgress;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button selectFolderButton;
         private System.Windows.Forms.Label DedupPathLabel;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

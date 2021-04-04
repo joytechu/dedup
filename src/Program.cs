@@ -21,29 +21,21 @@ namespace Dedup
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dedup());
-            var builder = new HostBuilder()
-             .ConfigureServices((hostContext, services) =>
-             {
-                 services.AddTransient<IFileHasher, FileHasher>();
-                 services.AddSingleton<Dedup>();
 
-             });
-            var host = builder.Build();
-            using (var serviceScope = host.Services.CreateScope())
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
             {
-                var services = serviceScope.ServiceProvider;
-                try
-                {
-                    var form1 = services.GetRequiredService<Dedup>();
-
-
-                    Application.Run(form1);
-                } catch(Exception e)
-                {
-                    
-                }
+                var form1 = serviceProvider.GetRequiredService<Dedup>();
+                Application.Run(form1);
             }
         }
+
+        private static void ConfigureServices(ServiceCollection services)
+        {
+            services.AddTransient<IFileHasher, FileHasher>();
+            services.AddScoped<Dedup>();
+        }
+
     }
 }

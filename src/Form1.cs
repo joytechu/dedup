@@ -42,8 +42,9 @@ namespace Dedup
         }
         #endregion
 
-        public Dedup()
+        public Dedup(IFileHasher hasher)
         {
+            _hasher = hasher;
             InitializeComponent();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             backgroundWorker1.WorkerReportsProgress = true;
@@ -85,7 +86,6 @@ namespace Dedup
             try
             {
                 totalFileCount = Directory.GetFiles(Path, fileExtension, SearchOption.AllDirectories).Length;
-
                 string[] files = Directory.GetFiles(Path, fileExtension, SearchOption.AllDirectories);
                 foreach (var file in files)
                 {
@@ -107,14 +107,23 @@ namespace Dedup
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void findButton_Click(object sender, EventArgs e)
         {
+            ResetForm();
             backgroundWorker1.RunWorkerAsync();
         }
 
+        private void ResetForm()
+        {
+            dict.Clear();
+            processedFileCount = 0;
+            fileScanProgress.Value = 0;
+            dupCount = 0;
+            duplicateFilesListBox.Items.Clear();
+        }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void selectFolderButton_Click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
             {
